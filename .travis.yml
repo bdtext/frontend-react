@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t bdtext/frontend-react -f Dockerfile.dev .
+
+scripts:
+  - docker run bdtext/frontend-react npm run test -- --coverage
