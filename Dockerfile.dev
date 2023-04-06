@@ -1,0 +1,21 @@
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+
+# RUN root -S root && bdtext -S bdtext -G bdtext
+
+# RUN chown -R root:root /app
+
+RUN npm install
+
+# Install ESLint
+# RUN npm install --save-dev eslint
+
+# Give permissions to the node user on the cache directory
+# RUN mkdir -p node_modules/.cache && chown -R /app/node_modules/.cache  && chown -R /app/node_modules/.cache/.eslintcache
+
+COPY . . 
+
+CMD ["npm", "run", "start"]
